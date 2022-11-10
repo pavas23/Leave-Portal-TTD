@@ -1,0 +1,47 @@
+#main-form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+#form-heading{
+    margin-top: 5%;
+    height: 15%;
+    width: 100%;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+#form-fields{
+    margin-top: 10%;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+#form-fields form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+input{
+    margin-top: 3vh;
+    height: 6vh;
+    width: 25vw;
+}
+select{
+    margin-top: 3vh;
+    height: 6vh;
+}
+textarea{
+    margin-top: 3vh;
+    width: 25vw;
+    height: 20vh;
+}
+
