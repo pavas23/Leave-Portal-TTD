@@ -96,6 +96,8 @@ export default function Form() {
               <option>Maths</option>
               <option>Physics</option>
               <option>Chemistry</option>
+              <option>Biology</option>
+              <option>Pharmacy</option>
             </select>
           </div>
 
