@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leave Portal</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <h1>{{title}}</h1>
+        <p>{{text}}</p>
+        <form method = "POST" action = "http://127.0.0.1:5000/reply/idPhD:{{id}}">
+            <input type = "submit" value = "Accept" name = "accept"/>
+            <input type = "submit" value = "Reject" name = "reject"/>
+        </form>
+    </body>
+</html>
+
