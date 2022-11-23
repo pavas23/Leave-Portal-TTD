@@ -16,5 +16,5 @@ Backend server is working on localhost:5000 port
 
 **Client:** React, TailwindCSS, Firebase
 
-**Server:** Node, Express
+**Server:** Node, Express, Handlebars
 
