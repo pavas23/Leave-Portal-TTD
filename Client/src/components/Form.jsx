@@ -87,21 +87,20 @@ export default function Form() {
             <select
               name="branch"
               className="inline-flex justify-center text-center rounded-md border m-2 p-4 border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              required
             >
-              <option default selected disabled>
-                Department
-              </option>
-              <option>CSE</option>
-              <option>EEE</option>
-              <option>ECE</option>
-              <option>ENI</option>
-              <option>Mechanical</option>
-              <option>Chemical</option>
-              <option>Civil</option>
-              <option>Economics</option>
-              <option>Maths</option>
-              <option>Physics</option>
+              <option>Biological Sciences</option>
+              <option>Chemical Engineering</option>
               <option>Chemistry</option>
+              <option>Civil Engineering</option>
+              <option>Computer Science and Information Systems</option>
+              <option>Economics and Finance</option>
+              <option>Electrical and Electronics Engineering</option>
+              <option>Humanities and Social Sciences</option>
+              <option>Mathematics</option>
+              <option>Mechanical Engineering</option>
+              <option>Pharmacy</option>
+              <option>Pharmacy</option>
             </select>
           </div>
 
