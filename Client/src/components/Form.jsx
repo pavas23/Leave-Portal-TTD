@@ -49,40 +49,6 @@ export default function Form() {
               ></textarea>
             </div>
           </div>
-          {/* <div class="flex justify-center">
-            <div class="mb-3 xl:w-96 flex flex-row w-full">
-              <label
-                for="exampleFormControlInput1"
-                class="form-label inline-block p-4 text-gray-700"
-              >
-                ID:
-              </label>
-              <input
-                type="text"
-                name="id"
-                class="
-                  form-control
-                  block
-                  px-3
-                  w-4/5
-                  py-1.5
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  m-0
-                  focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
-                "
-                id="exampleFormControlInput1"
-                required
-              />
-            </div>
-          </div> */}
-
           <div>
             <select
               name="branch"
@@ -103,23 +69,6 @@ export default function Form() {
               <option>Pharmacy</option>
             </select>
           </div>
-
-          {/* <div>
-            <select
-              name="batch"
-              className="inline-flex justify-center text-center m-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-            >
-              <option default selected disabled>
-                Batch
-              </option>
-              <option>2022</option>
-              <option>2021</option>
-              <option>2020</option>
-              <option>2019</option>
-              <option>2018</option>
-            </select>
-            <br />
-          </div> */}
           <div className="flex flex-row justify-center align-middle text-center">
             <button class="bg-blue-400 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full">
               Submit for Approval
