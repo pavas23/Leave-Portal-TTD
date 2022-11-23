@@ -12,3 +12,9 @@ React App is working on localhost:3000 port
 
 Backend server is working on localhost:5000 port 
 ```
+## Tech Stack
+
+**Client:** React, TailwindCSS, Firebase
+
+**Server:** Node, Express
+
