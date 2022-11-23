@@ -25,8 +25,8 @@ app.post("/submit",async (req,res)=>{
         let transporter = nodemailer.createTransport({
             service:"gmail",
             auth:{
-                user:"pavasgarg2003@gmail.com",
-                pass:"fiqtvhqswyhjwhtn"
+                user:"",
+                pass:""
             },
             tls:{
                 rejectUnauthorized:false,
@@ -50,8 +50,8 @@ app.post("/submit",async (req,res)=>{
         // let hodEmail = hod.email;
 
         let mailOptions = {
-            from:"pavasgarg2003@gmail.com",
-            to:"pavas23@gmail.com",
+            from:"",
+            to:"",
             subject:"PhD leave portal",
             context:{
                 title:"Request for leave",
