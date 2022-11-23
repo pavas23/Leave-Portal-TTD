@@ -25,8 +25,8 @@ app.post("/submit",async (req,res)=>{
         let transporter = nodemailer.createTransport({
             service:"gmail",
             auth:{
-                user:"",
-                pass:""
+                user:"pavasgarg2003@gmail.com",
+                pass:"fiqtvhqswyhjwhtn"
             },
             tls:{
                 rejectUnauthorized:false,
@@ -45,13 +45,12 @@ app.post("/submit",async (req,res)=>{
 
         transporter.use('compile',hbs(handlebarOptions));
 
-        // will find the email of the hod to whom the mail will be sent
-        // let hod = await Hod.findOne({department:req.body.branch});
-        // let hodEmail = hod.email;
+        let hod = await Hod.findOne({department:req.body.branch});
+        let hodEmail = hod.email;
 
         let mailOptions = {
-            from:"",
-            to:"",
+            from:"pavasgarg2003@gmail.com",
+            to:hodEmail,
             subject:"PhD leave portal",
             context:{
                 title:"Request for leave",
@@ -80,7 +79,7 @@ app.post("/submit",async (req,res)=>{
         });
 
         res.redirect("http://localhost:3000");
-        
+
     }catch(error){
         console.log(error);
         res.send("Internal Server Error Occured")
@@ -88,14 +87,24 @@ app.post("/submit",async (req,res)=>{
 });
 
 // reply endpoint when the hod clicks the button
-app.post("/reply/",async (req,res)=>{
-    // let phd = await Phd.findOne({id:req.params.id});
+app.post("/reply",async (req,res)=>{
+    var id = req.query.id;
     if(req.body.accept){
-        // phd.leave = true;
+        Phd.findOneAndUpdate({id:id},{$set:{leave:true}},(err,data)=>{
+            if(err){
+                console.log(err);
+                return;
+            }
+        });
         res.send("Accepted!!");
     }
     else{
-        // phd.leave = false;
+        Phd.findOneAndUpdate({id:id},{$set:{leave:false}},(err,data)=>{
+            if(err){
+                console.log(err);
+                return;
+            }
+        });
         res.send("rejected");
     }
 });
