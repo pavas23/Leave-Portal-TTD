@@ -9,14 +9,14 @@
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;
+                font-size: 14px;
             }
         </style>
     </head>
     <body>
-        <h1>{{title}}</h1>
+        <h3>{{title}}</h3>
         <p>{{text}}</p>
-        <form method = "POST" action = "http://127.0.0.1:5000/reply/?id={{id}}">
+        <form method = "POST" action = "http://127.0.0.1:5000/reply/?email={{email}}" >
             <input type = "submit" value = "Accept" name = "accept"/>
             <input type = "submit" value = "Reject" name = "reject"/>
         </form>

@@ -7,9 +7,10 @@ const Hod = require("../Backend/Models/Hod");
 const Phd = require("../Backend/Models/Phd");
 const hbs = require("nodemailer-express-handlebars");
 const path = require("path");
+const cors = require("cors");
 const connectToMongo = require("../Backend/db");
 connectToMongo();
-
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
@@ -17,16 +18,16 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.post("/submit",async (req,res)=>{
     try{
 
-        var id = req.query.id;
-        var name = req.query.name;
-        var email = req.query.email;
-        var batch = req.query.batch;
+        var id = req.body.id;
+        var name = req.body.name;
+        var email = req.body.email;
+        var branch = req.body.branch;
 
         let transporter = nodemailer.createTransport({
             service:"gmail",
             auth:{
-                user:"",
-                pass:""
+                user:"pavasgarg2003@gmail.com",
+                pass:"fiqtvhqswyhjwhtn"
             },
             tls:{
                 rejectUnauthorized:false,
@@ -45,18 +46,20 @@ app.post("/submit",async (req,res)=>{
 
         transporter.use('compile',hbs(handlebarOptions));
 
-        let hod = await Hod.findOne({department:req.body.branch});
+        let hod = await Hod.findOne({department:branch});
+        console.log(hod);
         let hodEmail = hod.email;
 
+
         let mailOptions = {
-            from:"",
+            from:"pavasgarg2003@gmail.com",
             to:hodEmail,
             subject:"PhD leave portal",
             context:{
                 title:"Request for leave",
-                id:id,
+                email:email,
                 text:`Respected Sir,
-                I am ${name} from ${batch} batch. Please grant me a leave as ${req.body.reason}. My id number is ${id} and my branch is ${req.body.branch}`,
+                I am ${name} . Please grant me a leave as ${req.body.reason}. My id number is ${id} and my branch is ${branch}. I want leaves for ${req.body.multipleDate}`,
             },
             template:'index',
         }
@@ -70,14 +73,15 @@ app.post("/submit",async (req,res)=>{
 
         let phD = await Phd.create({
             name:name,
-            department:req.body.branch,
+            department:branch,
             id:id,
             campusId:"42131234",
             phoneNo:1234567890,
             emailId:email,
             leave:false,
+            reason:req.body.reason,
+            date:req.body.multipleDate,
         });
-
         res.redirect("http://localhost:3000");
 
     }catch(error){
@@ -88,9 +92,9 @@ app.post("/submit",async (req,res)=>{
 
 // reply endpoint when the hod clicks the button
 app.post("/reply",async (req,res)=>{
-    var id = req.query.id;
+    var email = req.query.email;
     if(req.body.accept){
-        Phd.findOneAndUpdate({id:id},{$set:{leave:true}},(err,data)=>{
+        Phd.findOneAndUpdate({emailId:email},{$set:{leave:true}},(err,data)=>{
             if(err){
                 console.log(err);
                 return;
@@ -99,13 +103,13 @@ app.post("/reply",async (req,res)=>{
         res.send("Accepted!!");
     }
     else{
-        Phd.findOneAndUpdate({id:id},{$set:{leave:false}},(err,data)=>{
+        Phd.findOneAndUpdate({emailId:email},{$set:{leave:false}},(err,data)=>{
             if(err){
                 console.log(err);
                 return;
             }
         });
-        res.send("rejected");
+        res.send("Rejected");
     }
 });
 

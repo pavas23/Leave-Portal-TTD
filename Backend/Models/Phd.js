@@ -24,6 +24,15 @@ const phdSchema = new mongoose.Schema({
     emailId:{
         type:String,
         required:true,
+        unique:true,
+    },
+    reason:{
+        type:String,
+        required:true,
+    },
+    date:{
+        type:Array,
+        required:true,
     },
     leave:{
         type:Boolean,
