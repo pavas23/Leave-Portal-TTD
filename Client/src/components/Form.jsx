@@ -8,8 +8,17 @@ export default function Form() {
   const [formData, setFormData] = useState();
   const idRef = useRef();
   const [multipleDate, setMultipleDate] = useState();
-
+  const [credentials, setCredentials] = useState({email:"", name:""});
+  useEffect(()=>{
+    const newObj = {
+      email: localStorage.getItem('email'),
+      name: localStorage.getItem('displayName')
+    }
+    setCredentials(newObj)
+  }, [])
   async function postData(url = "https://localhost:5000/submit", data = {}) {
+
+   
     const response = await fetch(url, {
       method: "POST", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
@@ -36,7 +45,10 @@ export default function Form() {
       id: idRef.current.value,
       multipleDate,
     };
-    postData(`https://localhost:5000/submit`, submitData).then((res) =>
+    const displayName = localStorage.getItem('displayName')
+    const email = localStorage.getItem('email')
+
+    postData(`http://127.0.0.1:5000/submit/?id=${email.slice(6, 10)}&batch=${email.slice(2, 6)}&email=${email}&name=${displayName}`, submitData).then((res) =>
       console.log(res)
     );
   };
@@ -62,9 +74,9 @@ export default function Form() {
           className="px-4 max-w-3xl mx-auto space-y-6"
           onSubmit={submitHandler}
         >
-          <h3>
-            Welcome, <strong>{localStorage.getItem("displayName")}</strong>
-          </h3>
+           <h3>Welcome, <strong>{localStorage.getItem("displayName")}</strong></h3>
+          {/* <h3>{"Last 4 digits: " + credentials.email.slice(6, 10)}</h3> */}
+          {/* <h3>{"Batch: " + credentials.email.slice(2, 6)}</h3> */}
           <br />
 
           <div className="flex justify-center">
