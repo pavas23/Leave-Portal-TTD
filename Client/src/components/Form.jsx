@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import DatePicker from "./DatePicker";
+
 import "./form.css";
 import Calendar from "react-select-date";
 
@@ -8,6 +8,7 @@ export default function Form() {
   const [showDate, setShowDate] = useState(false);
   const [formData, setFormData] = useState();
   const idRef = useRef();
+  const branchRef = useRef()
   const [multipleDate, setMultipleDate] = useState();
   const [credentials, setCredentials] = useState({email:"", name:""});
   useEffect(()=>{
@@ -38,18 +39,23 @@ export default function Form() {
     setFormData((prev) => e.target.value);
     console.log(e.target.value);
   };
+  
   const submitHandler = (event) => {
+    alert('Email sent successfully!');
+    const displayName = localStorage.getItem('displayName')
+    const email = localStorage.getItem('email')
     event.preventDefault();
     console.log(showDate);
     let submitData = {
       reason: formData,
       id: idRef.current.value,
       multipleDate,
+      name:displayName,
+      email:email,
+      branch: branchRef.current.value
     };
-    const displayName = localStorage.getItem('displayName')
-    const email = localStorage.getItem('email')
-
-    postData(`http://127.0.0.1:5000/submit/?id=${email.slice(6, 10)}&batch=${email.slice(2, 6)}&email=${email}&name=${displayName}`, submitData).then((res) =>
+ 
+    postData("http://127.0.0.1:5000/submit/", submitData).then((res) =>
       console.log(res)
     );
   };
@@ -76,8 +82,6 @@ export default function Form() {
           onSubmit={submitHandler}
         >
            <h3>Welcome, <strong>{localStorage.getItem("displayName")}</strong></h3>
-          {/* <h3>{"Last 4 digits: " + credentials.email.slice(6, 10)}</h3> */}
-          {/* <h3>{"Batch: " + credentials.email.slice(2, 6)}</h3> */}
           <br />
 
           <div className="flex justify-center">
@@ -101,10 +105,7 @@ export default function Form() {
           </div>
 
           <div className="flex justify-center">
-          <button onClick={() => setShowDate((prev) => !prev)}>
-            {showDate ? "Exit" : "Select Dates"}
-          </button>
-          {showDate ? (
+          {true ? (
             <Calendar
               onSelect={(date) => setMultipleDate(date)}
               templateClr="blue"
@@ -156,42 +157,22 @@ export default function Form() {
             <select
               name="branch"
               className="inline-flex justify-center text-center rounded-md border m-2 p-4 border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+              ref={branchRef}
             >
-              <option default selected disabled>
-                Department
-              </option>
-              <option>CSE</option>
-              <option>EEE</option>
-              <option>ECE</option>
-              <option>ENI</option>
-              <option>Mechanical</option>
-              <option>Chemical</option>
-              <option>Civil</option>
-              <option>Economics</option>
-              <option>Maths</option>
-              <option>Physics</option>
+              <option default selected>Biological Sciences</option>
+              <option>Chemical Engineering</option>
               <option>Chemistry</option>
-              <option>Biology</option>
+              <option>Civil Engineering</option>
+              <option>Computer Science and Information Systems</option>
+              <option>Economics and Finance</option>
+              <option>Electrical and Electronics Engineerin</option>
+              <option>Humanities and Social Sciences</option>
+              <option>Mathematics</option>
+              <option>Mechanical Engineering</option>
               <option>Pharmacy</option>
+              <option>Physics</option>
             </select>
           </div>
-
-          {/* <div>
-            <select
-              name="batch"
-              className="inline-flex justify-center text-center m-2 rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-            >
-              <option default selected disabled>
-                Batch
-              </option>
-              <option>2022</option>
-              <option>2021</option>
-              <option>2020</option>
-              <option>2019</option>
-              <option>2018</option>
-            </select>
-            <br />
-          </div> */}
           <div className="flex flex-row justify-center align-middle text-center">
             <button
               type="submit"
