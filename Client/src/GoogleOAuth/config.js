@@ -1,14 +1,13 @@
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD_vTZ4BbXeH0r5BsWkO0ZJEcUnyidBZrc",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "td-leave.firebaseapp.com",
   projectId: "td-leave",
   storageBucket: "td-leave.appspot.com",
   messagingSenderId: "907300732555",
-  appId: "1:907300732555:web:f4c0ca6ee94bf77c435e8e",
+  appId: process.env.REACT_APP_APP_ID,
   measurementId: "G-VGWWK4DY2M"
 };
 

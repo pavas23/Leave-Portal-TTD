@@ -4,6 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import "./form.css";
 import Calendar from "react-select-date";
 
+const REGEX = new RegExp(`(H[0-9]{4})|(41[0-3]20[1-2][0-9][0-9]{4})`) 
+
+
 export default function Form() {
   const [showDate, setShowDate] = useState(false);
   const [formData, setFormData] = useState();
@@ -18,7 +21,7 @@ export default function Form() {
     }
     setCredentials(newObj)
   }, [])
-  async function postData(url = "https://localhost:5000/submit", data = {}) {
+  async function postData(url = `${process.env.REACT_APP_BASEURL}/submit`, data = {}) {
 
    
     const response = await fetch(url, {
@@ -41,7 +44,10 @@ export default function Form() {
   };
   
   const submitHandler = (event) => {
-    alert('Email sent successfully!');
+    if(!REGEX.test(idRef.current.value)){
+      alert('Please Enter Valid ID')
+      return
+    }
     const displayName = localStorage.getItem('displayName')
     const email = localStorage.getItem('email')
     event.preventDefault();
@@ -55,9 +61,14 @@ export default function Form() {
       branch: branchRef.current.value
     };
  
-    postData("http://127.0.0.1:5000/submit/", submitData).then((res) =>
+    postData(`${process.env.REACT_APP_APIURL}/submit/`, submitData).then((res) =>
       console.log(res)
     );
+    
+    alert('Email sent successfully!');
+    // localStorage.clear();
+    // window.location.reload();
+
   };
 
   const logout = () => {
@@ -111,11 +122,13 @@ export default function Form() {
               templateClr="blue"
               selectDateType="multiple"
               showDateInputField={false}
+              minDate="2022-12-16"
+              maxDate="2022-12-31"
             />
           ) : null}
           </div>
         <div>
-        Note: ID should be of format <b>41220221234</b> and PSRN should be of the format <b>H1234</b>
+        Note: ID should be of format <b>41220221234</b> and PSRN should be of the format <b>H0234</b>
         </div>
           <div className="flex justify-center">
             <div className="mb-3 xl:w-96 flex flex-row w-full">
