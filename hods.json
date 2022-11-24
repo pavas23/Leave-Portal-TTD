@@ -5,7 +5,7 @@
   "name": "Prof. Nishith Gupta",
   "department": "Biological Sciences",
   "hpsrn": "H0772",
-  "email": "\"pavas23@gmail.com\""
+  "email": ""
 },{
   "_id": {
     "$oid": "637d32605d77fb513c54cde7"
@@ -13,7 +13,7 @@
   "name": "Prof. I Sreedhar",
   "department": "Chemical Engineering",
   "hpsrn": "H0014",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d331c5d77fb513c54cde8"
@@ -21,7 +21,7 @@
   "name": "Prof. Sounak Roy",
   "department": "Chemistry",
   "hpsrn": "H0327",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d336d5d77fb513c54cde9"
@@ -29,7 +29,7 @@
   "name": "Prof. Murari Raja Raja Varma",
   "department": "Civil Engineering",
   "hpsrn": "H0245",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d341a5d77fb513c54cdea"
@@ -37,7 +37,7 @@
   "name": "Prof. N L Bhanu Murthy",
   "department": "Computer Science and Information Systems",
   "hpsrn": "H0208",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d34a85d77fb513c54cdeb"
@@ -45,7 +45,7 @@
   "name": "Dr. Dushyant Kumar",
   "department": "Economics and Finance",
   "hpsrn": "H0538",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d35bf5d77fb513c54cdec"
@@ -53,7 +53,7 @@
   "name": "Prof. Subhendu Kumar Sahoo",
   "department": "Electrical and Electronics Engineering",
   "hpsrn": "H0290",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d363f5d77fb513c54cded"
@@ -61,7 +61,7 @@
   "name": "Prof. Shilpaa Anand",
   "department": "Humanities and Social Sciences",
   "hpsrn": "H0662",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d36515d77fb513c54cdee"
@@ -69,7 +69,7 @@
   "name": "Prof. Pradyumn Kumar Sahoo",
   "department": "Mathematics",
   "hpsrn": "H0125",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d36b35d77fb513c54cdef"
@@ -77,7 +77,7 @@
   "name": "Prof. N Suresh Kumar Reddy",
   "department": "Mechanical Engineering",
   "hpsrn": "H0230",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d36fc5d77fb513c54cdf0"
@@ -85,7 +85,7 @@
   "name": "Prof. A Sajeli Begum",
   "department": "Pharmacy",
   "hpsrn": "H0202",
-  "email": "pavas23@gmail.com"
+  "email": ""
 },{
   "_id": {
     "$oid": "637d37345d77fb513c54cdf1"
@@ -93,5 +93,5 @@
   "name": "Prof. Sarmistha Banik",
   "department": "Physics",
   "hpsrn": "H0356",
-  "email": "pavas23@gmail.com"
+  "email": ""
 }]
