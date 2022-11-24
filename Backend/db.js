@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const mongoURI = "mongodb://localhost:27017/TdLeave";
+const mongoURI = "mongodb://localhost:27017/TDLeave";
 
 const connectToMongo = ()=>{
     mongoose.connect(mongoURI,()=>{
@@ -8,3 +8,6 @@ const connectToMongo = ()=>{
 }
 
 module.exports = connectToMongo;
+
+
+

@@ -9,23 +9,11 @@ const phdSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    sex:{
-        type:String,
-        required:true,
-    },
-    Category:{
-        type:String,
-        required:true,
-    },
     id:{
-        type:Number,
+        type:String,
         required:true,
     },
     campusId:{
-        type:String,
-        required:true,
-    },
-    sourceOfFellowship:{
         type:String,
         required:true,
     },
@@ -42,5 +30,6 @@ const phdSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("phd",phdSchema);
+const Phd = mongoose.model("phd",phdSchema);
+module.exports = Phd;
 

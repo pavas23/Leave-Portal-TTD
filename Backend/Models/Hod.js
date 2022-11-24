@@ -19,5 +19,6 @@ const hodSchema = new mongoose.Schema({
     }
 });
 
-module.exports = mongoose.model("hod",hodSchema);
+module.exports = mongoose.model("Hod",hodSchema);
+
 
