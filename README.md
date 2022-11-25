@@ -44,10 +44,10 @@ npm run start
 ## Documentation
 
 #### This app can be used in following way
-- First the user needs to login with BITS mail id to leave portal
+- First the user needs to login with ```BITS``` mail id to leave portal
 - Then specify the reason for leave (multiple reasons for multiple leaves) in text field provided
 - Then select the dates on which the user wants a leave.
-- Enter their ID number for PhD students and PSRN number for faculty members in the input field.
+- Enter their ```ID number``` for PhD students and ```PSRN number``` for faculty members in the input field.
 - Select their department from the dropdown.
 - Then submit the form
 - Then email is sent to HOD of that department and if he/she approves the request it gets updated in the database.
