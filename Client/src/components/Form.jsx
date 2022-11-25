@@ -1,5 +1,5 @@
-
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
+import {REACT_APP_APIURL} from '../config'
 
 import "./form.css";
 import Calendar from "react-select-date";
@@ -8,20 +8,20 @@ const REGEX = new RegExp(`(H[0-9]{4})|(41[0-3]20[1-2][0-9][0-9]{4})`)
 
 
 export default function Form() {
-  const [showDate, setShowDate] = useState(false);
+  // const [showDate, setShowDate] = useState(false);
   const [formData, setFormData] = useState();
   const idRef = useRef();
   const branchRef = useRef()
   const [multipleDate, setMultipleDate] = useState();
-  const [credentials, setCredentials] = useState({email:"", name:""});
-  useEffect(()=>{
-    const newObj = {
-      email: localStorage.getItem('email'),
-      name: localStorage.getItem('displayName')
-    }
-    setCredentials(newObj)
-  }, [])
-  async function postData(url = `${process.env.REACT_APP_BASEURL}/submit`, data = {}) {
+  // const [credentials, setCredentials] = useState({email:"", name:""});
+  // useEffect(()=>{
+  //   const newObj = {
+  //     email: localStorage.getItem('email'),
+  //     name: localStorage.getItem('displayName')
+  //   }
+  //   setCredentials(newObj)
+  // }, [])
+  async function postData(url = `${REACT_APP_APIURL}/submit`, data = {}) {
 
    
     const response = await fetch(url, {
@@ -51,7 +51,7 @@ export default function Form() {
     const displayName = localStorage.getItem('displayName')
     const email = localStorage.getItem('email')
     event.preventDefault();
-    console.log(showDate);
+    // console.log(showDate);
     let submitData = {
       reason: formData,
       id: idRef.current.value,
@@ -61,13 +61,13 @@ export default function Form() {
       branch: branchRef.current.value
     };
  
-    postData(`${process.env.REACT_APP_APIURL}/submit/`, submitData).then((res) =>
+    postData(`${REACT_APP_APIURL}/submit/`, submitData).then((res) =>
       console.log(res)
     );
     
     alert('Email sent successfully!');
-    // localStorage.clear();
-    // window.location.reload();
+    localStorage.clear();
+    window.location.reload();
 
   };
 
@@ -195,6 +195,7 @@ export default function Form() {
             </button>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button
+            type="button"
               className="bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full"
               onClick={logout}
             >
